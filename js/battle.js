@@ -7,6 +7,9 @@ class SpaceShip {
   }
   attack() {
     // if math.random is less than .7 then its a hit
+    while(myShip.hp <=0 || enemySquad[0] === 0) {
+
+    
     if (myShip.accuracy > Math.random()) {
       console.log("Fire!!! Direct hit");
       enemySquad[0].hp -= myShip.firePower;
@@ -32,9 +35,10 @@ class SpaceShip {
           console.log("Enemy opened fire. We narrowly escaped")
       }
     }
-
+  }
     // if enemy hp is <= 0 enemy ship destroyed. enemy squad .pop method
     //if i miss or enemy ship survives then they attack.if math.random is less than their accuracy then then their firepower minus myship hp. if not they miss.if they hit then its enemy firepower minus my ships hp
+    
   }
 }
 
@@ -88,6 +92,6 @@ const enemySquad = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 //=====player ship
 const myShip = new SpaceShip("USS Hello World", 20, 5, 0.7);
 
-myShip.attack();
-console.log(enemySquad);
+myShip.attack()
+
 
