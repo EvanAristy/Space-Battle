@@ -1,3 +1,13 @@
+const heroName = document.querySelector("#hero-ship")
+const enemyName = document.querySelector("#enemy-ship")
+const playerStats = document.querySelector("#playerStats")
+
+// stats
+const myHp = document.querySelector("#myHP")
+const enemyHp = document.querySelector("#enemyHP")
+const enemyFp = document.querySelector("#enemyFP")
+const enemyAc = document.querySelector("#enemyAc")
+
 class SpaceShip {
   constructor(name, hp, firePower, accuracy) {
     this.name = name;
@@ -5,18 +15,27 @@ class SpaceShip {
     this.firePower = firePower;
     this.accuracy = accuracy;
   }
-  attack() {
+
+
+  attack(target) {
     // if math.random is less than .7 then its a hit
-    while(myShip.hp <=0 || enemySquad[0] === 0) {
+    heroName.innerHTML = myShip.name
+    enemyName.innerHTML = enemySquad[0].name
+  
+    
+
+    while(myShip.hp && enemySquad[0]?.hp > 0) {
 
     
     if (myShip.accuracy > Math.random()) {
       console.log("Fire!!! Direct hit");
       enemySquad[0].hp -= myShip.firePower;
-      console.log(enemySquad[0].hp);
+      
       if (enemySquad[0].hp <= 0) {
         let graveYard = enemySquad.shift();
-        console.log(enemySquad + "Enemy ship destroyed!");
+        // console.log("Enemy ship " + enemySquad[0]?.name + " destroyed!");
+        const message = enemySquad[0]?.name ? 'enemy ship destroyed': 'no more enemies'
+        console.log(message)
       } else {
         console.log("We missed! They opened fire");
         if (Math.random < enemySquad[0].accuracy) {
@@ -36,6 +55,8 @@ class SpaceShip {
       }
     }
   }
+
+  
     // if enemy hp is <= 0 enemy ship destroyed. enemy squad .pop method
     //if i miss or enemy ship survives then they attack.if math.random is less than their accuracy then then their firepower minus myship hp. if not they miss.if they hit then its enemy firepower minus my ships hp
     
